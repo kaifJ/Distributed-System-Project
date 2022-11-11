@@ -18,6 +18,6 @@ app.get('/', (request, response) => {
     response.send(`<h1>Hello from Master server. I will redirect your call to other workers</h1>`)
 })
 
-server.listen(PORT, 'localhost', () => {
+server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
