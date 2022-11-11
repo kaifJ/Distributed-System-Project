@@ -13,7 +13,10 @@ const server = http.createServer(app)
 app.use(express.json())
 app.use(cors())
 
-app.use((request, response) => { loadBalancer(request, response) })
+// app.use((request, response) => { loadBalancer(request, response) })
+app.get('/', (request, response) => {
+    response.send(`<h1>Hello from Master server. I will redirect your call to other workers</h1>`)
+})
 
 server.listen(PORT, 'localhost', () => {
     console.log(`Server running on port ${PORT}`)
