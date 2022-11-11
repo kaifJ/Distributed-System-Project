@@ -1,0 +1,20 @@
+require('dotenv').config()
+
+const cors = require('cors')
+const http = require('http')
+const express = require('express')
+const loadBalancer = require('./loadBalancer')
+
+const PORT = process.env.PORT || 3001
+
+const app = express()
+const server = http.createServer(app)
+
+app.use(express.json())
+app.use(cors())
+
+app.use((request, response) => { loadBalancer(request, response) })
+
+server.listen(PORT, 'localhost', () => {
+    console.log(`Server running on port ${PORT}`)
+})
