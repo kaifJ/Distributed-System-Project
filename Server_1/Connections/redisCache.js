@@ -1,4 +1,4 @@
-const redis = require('redis')
+const Redis = require('ioredis')
 let client
 
 const setKey = async (key, value) => {
@@ -15,19 +15,19 @@ const deleteKey = async key => {
 }
 
 const connectRedisCache = async () => {
-    client = redis.createClient({
-        url: process.env.REDIS_URL
+    client = new Redis({
+        host: 'redis-10047.c135.eu-central-1-1.ec2.cloud.redislabs.com',
+        port: 10047,
+        password: process.env.REDIS_PASSWORD
     });
-
-    client.connect()
 
     client.on("connect", () => {
-        console.log('Connected to redis cache')
+        console.log("Connected to redis cache")
     })
 
-    client.on('error', err => {
-        console.log('Error ' + err);
-    });
+    client.on("error", () => {
+        console.log("Error in connecting to redis cache")
+    })
 }
 
 module.exports = {

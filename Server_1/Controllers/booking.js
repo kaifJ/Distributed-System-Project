@@ -1,12 +1,10 @@
 const bookingRoutes = require('express').Router()
+const Booking = require('../Models/booking')
 const { setKey, getValue, deleteKey } = require('../Connections/redisCache')
 
 bookingRoutes.get('/', async (request, response) => {
-    await setKey('test', 'Locked').catch(err => console.log(err))
-    let result = await getValue('test')
-    console.log(result)
-    await deleteKey('test').catch(err => console.log(err))
-    console.log('deleted')
+    let bookings = await Booking.find({})
+    console.log(JSON.stringify(bookings))
     response.send(`<h1>Hello from Master server. I will redirect your call to other workers</h1>`)
 })
 

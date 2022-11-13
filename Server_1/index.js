@@ -6,6 +6,9 @@ const express = require('express')
 const bookingRoutes = require('./Controllers/booking')
 
 const { connectToCache } = require('./Connections/redisCache')
+const connectToDB = require('./Connections/mongodb')
+
+connectToDB()
 connectToCache()
 
 const PORT = process.env.PORT || 3001
