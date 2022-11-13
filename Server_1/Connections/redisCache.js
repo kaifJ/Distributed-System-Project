@@ -25,8 +25,8 @@ const connectRedisCache = async () => {
         console.log("Connected to redis cache")
     })
 
-    client.on("error", () => {
-        console.log("Error in connecting to redis cache")
+    client.on("error", (err) => {
+        console.log(`Error in connecting to redis cache ${err}`)
     })
 }
 
