@@ -11,6 +11,11 @@ const getValue = async (key) => {
     return value
 }
 
+const getAllKeys = async () => {
+    let value = await client.keys("*")
+    return value
+}
+
 const deleteKey = async key => {
     return await client.del(key)
 }
@@ -35,5 +40,6 @@ module.exports = {
     connectToCache: connectRedisCache,
     setKey,
     getValue,
-    deleteKey
+    deleteKey,
+    getAllKeys
 }

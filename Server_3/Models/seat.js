@@ -1,12 +1,15 @@
 const mongoose = require('mongoose')
 
-const bookingSchema = new mongoose.Schema({
-    screen: String,
+const seatSchema = new mongoose.Schema({
+    screen: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Screen'
+    },
     seat: String,
     status: String,
 })
 
-bookingSchema.set('toJSON', {
+seatSchema.set('toJSON', {
     transform: (document, requiredObject) => {
         requiredObject.id = requiredObject._id
         delete requiredObject._id
@@ -14,4 +17,4 @@ bookingSchema.set('toJSON', {
     }
 })
 
-module.exports = mongoose.model('Booking', bookingSchema)
+module.exports = mongoose.model('Seat', seatSchema)

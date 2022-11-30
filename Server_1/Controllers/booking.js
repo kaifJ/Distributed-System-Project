@@ -1,7 +1,7 @@
 const bookingRoutes = require('express').Router()
 const Seat = require('../Models/seat')
 const Screen = require('../Models/screens')
-const { setKey, getValue, deleteKey } = require('../Connections/redisCache')
+const { setKey, getValue, deleteKey, getAllKeys } = require('../Connections/redisCache')
 const constants = require('../utils/constants')
 
 const helper = require('../utils/dummydata')
@@ -14,7 +14,17 @@ bookingRoutes.get('/', async (request, response) => {
 
 // Api to get details of particular screen
 bookingRoutes.get('/:id', async (request, response) => {
+    let keys = await getAllKeys()
     let screen = await Screen.findById(request.params.id).populate('seats', { seat: 1, status: 1 })
+
+    screen.seats = screen.seats.map(seat => {
+        if (keys.indexOf(seat._id.toString()) !== -1) {
+            seat.status = "Locked"
+            return seat
+        }
+        return seat
+    })
+
     response.status(200).json(screen)
 })
 
