@@ -19,6 +19,9 @@ const server = http.createServer(app)
 app.use(express.json())
 app.use(cors())
 app.use('/api/bookings', bookingRoutes)
+app.use('/', (request, response) => {
+    response.status(200).send()
+})
 
 
 server.listen(PORT, () => {

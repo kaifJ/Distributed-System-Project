@@ -40,11 +40,16 @@ bookingRoutes.post('/', async (request, response) => {
             })
 
             await Promise.all(promises)
+            redisPromises = seatIds.map(seat => deleteKey(seat))
+            await Promise.all(redisPromises)
             response.status(201).send({
                 message: 'Booking Successful'
             })
         } catch (error) {
             console.log('error')
+            response.status(500).send({
+                message: 'Internal Server Error'
+            })
         }
     }, 5000)
 })
