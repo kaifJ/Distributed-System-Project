@@ -20,7 +20,7 @@ app.use(express.json())
 app.use(cors())
 app.use('/api/bookings', bookingRoutes)
 app.use('/', (request, response) => {
-    response.status(200).send('<h1>Hello from server 1</h1>')
+    response.status(200).send('<h1>Hello from server 3</h1>')
 })
 
 
