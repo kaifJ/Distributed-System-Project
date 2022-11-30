@@ -1,8 +1,9 @@
 const Redis = require('ioredis')
+const constants = require('../utils/constants')
 let client
 
 const setKey = async (key, value) => {
-    await client.set(key, value)
+    await client.set(key, value, 'EX', constants.BOOKING_DELAY)
 }
 
 const getValue = async (key) => {

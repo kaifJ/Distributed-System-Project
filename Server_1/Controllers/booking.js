@@ -2,6 +2,7 @@ const bookingRoutes = require('express').Router()
 const Seat = require('../Models/seat')
 const Screen = require('../Models/screens')
 const { setKey, getValue, deleteKey } = require('../Connections/redisCache')
+const constants = require('../utils/constants')
 
 const helper = require('../utils/dummydata')
 
@@ -40,8 +41,10 @@ bookingRoutes.post('/', async (request, response) => {
             })
 
             await Promise.all(promises)
+
             redisPromises = seatIds.map(seat => deleteKey(seat))
             await Promise.all(redisPromises)
+
             response.status(201).send({
                 message: 'Booking Successful'
             })
@@ -51,7 +54,7 @@ bookingRoutes.post('/', async (request, response) => {
                 message: 'Internal Server Error'
             })
         }
-    }, 5000)
+    }, constants.BOOKING_DELAY)
 })
 
 
