@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const ScreenContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  width: inherit;
+  align-self: flex-start;
 `;
 export const Screen = styled.div`
   display: flex;
@@ -16,16 +18,7 @@ export const Screen = styled.div`
     font-size: 16px;
     line-height: 15px;
     color: #000000;
+    margin-bottom: 10px;
     text-align: center;
-    padding-bottom: 5px;
-  }
-  .thumbnail {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    justify-content: center;
-    background-color: #c42525;
-    width: 152px;
-    height: 145px;
   }
 `;
