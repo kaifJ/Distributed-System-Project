@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { AxiosInstance } from "../../utils/api";
 import { GET_SEATS } from "../../utils/endpoints";
+import Loader from "./Loader";
 import { Button, Seats, SeatsContainer, Main } from "./SeatSelection.style";
 
 const SeatSelection = (props) => {
   const [seats, setSeats] = useState([]);
   const [selectedSeat, setSelectedSeat] = useState({});
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     // Get Seats
@@ -18,7 +20,8 @@ const SeatSelection = (props) => {
   }, []);
 
   return (
-    <Main>
+    loading ? <Loader loading={loading}/>: (
+      <Main>
       <SeatsContainer>
         {seats.map((s, i) => (
           <Seats
@@ -36,6 +39,7 @@ const SeatSelection = (props) => {
         Confirm Booking
       </Button>
     </Main>
+    )
   );
 };
 
