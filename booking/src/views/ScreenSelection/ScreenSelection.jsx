@@ -23,9 +23,7 @@ const ScreenSelection = (props) => {
       {screens.map((screen, i) => (
         <Screen key={screen.id} onClick={() => props.selectScreen(screen.id)}>
           <span className="name">{`Screen ${i + 1}`}</span>
-          <div className="thumbnail">
-            <span>{screen.movie}</span>
-          </div>
+          <img src={screen.imageURL}/>
         </Screen>
       ))}
     </ScreenContainer>

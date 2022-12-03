@@ -11,7 +11,7 @@ const connectToDB = require('./Connections/mongodb')
 connectToDB()
 connectToCache()
 
-const PORT = process.env.PORT || 3003
+const PORT = process.env.PORT || 3001
 
 const app = express()
 const server = http.createServer(app)

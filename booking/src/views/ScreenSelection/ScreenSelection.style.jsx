@@ -12,10 +12,12 @@ export const Screen = styled.div`
   .name {
     font-family: "Inter";
     font-style: normal;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 16px;
     line-height: 15px;
     color: #000000;
+    text-align: center;
+    padding-bottom: 5px;
   }
   .thumbnail {
     display: flex;
