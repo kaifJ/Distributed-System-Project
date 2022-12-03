@@ -1,7 +1,11 @@
-import './App.style.jsx';
-import { AppDiv } from './App.style.jsx';
-import Screen1 from './screen1/screen1';
+import "./App.style.jsx";
+import { AppDiv } from "./App.style.jsx";
+import MainContainer from "./views/MainContainer/MainContainer";
 
-const App = () => <AppDiv><Screen1/></AppDiv>;
+const App = () => (
+  <AppDiv>
+    <MainContainer />
+  </AppDiv>
+);
 
 export default App;
