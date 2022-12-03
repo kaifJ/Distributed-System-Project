@@ -6,7 +6,8 @@ const screenSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Seat'
     }],
-    movie: String
+    movie: String,
+    imageURL: String
 })
 
 screenSchema.set('toJSON', {
