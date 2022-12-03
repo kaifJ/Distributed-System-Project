@@ -42,3 +42,17 @@ export const Button = styled.button`
   margin-top: 75px;
   margin-left: 50px;
 `;
+
+export const Loader = styled.div`
+  display: flex;
+  flex: 1;
+  width: 90vw;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .message{
+    padding-top: 50px;
+    font-weight: bold;
+  }
+`
