@@ -19,7 +19,7 @@ let generateScreens = (numberOfScreens) => {
 
 let generateSeats = (screenId) => {
     let seats = []
-    for (i = 1; i <= 5; i++) {
+    for (i = 1; i <= 80; i++) {
         seats.push({
             screen: screenId,
             seat: i + '',

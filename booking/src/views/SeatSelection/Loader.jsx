@@ -12,7 +12,7 @@ const DoubleLoader = ({loading}) => {
     return (
         <Loader>
             <DoubleSquareLoader {...loaderProps} />
-            <span className='message'>Simulating Payment and stuff. Sit tight we will redirect you.</span>
+            <span className='message'>Simulating Payment. Relax, have a cold one, you will be redirected once the booking is confirmed.</span>
         </Loader>
     )
 }

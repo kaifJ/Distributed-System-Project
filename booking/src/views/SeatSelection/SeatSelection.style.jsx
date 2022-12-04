@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const SeatsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  width: 60%;
 `;
 
 export const Seats = styled.div`
@@ -21,6 +22,8 @@ export const Seats = styled.div`
     line-height: 15px;
     color: #000000;
   }
+  .seat-number{
+  }
   svg {
     width: 54px;
     height: 49px;
@@ -33,7 +36,7 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 100%;
+  width: 80%;
   align-items: center;
 `;
 
@@ -42,6 +45,7 @@ export const BackButton = styled.div`
   align-self: flex-start;
   justify-content: center;
   cursor: pointer;
+  margin-bottom: 50px;
   svg {
     font-size: 20px;
     margin-right: 10px;
@@ -67,5 +71,8 @@ export const Loader = styled.div`
   .message{
     padding-top: 50px;
     font-weight: bold;
+  }
+  svg{
+    font-size: 50px;
   }
 `
