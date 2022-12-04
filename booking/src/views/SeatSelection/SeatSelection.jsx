@@ -53,7 +53,8 @@ const SeatSelection = (props) => {
       setLoading(false)
 
     }).catch(err => {
-      console.log('some error occured')
+      setLoading(false)
+      fetch()
     })
   };
 
