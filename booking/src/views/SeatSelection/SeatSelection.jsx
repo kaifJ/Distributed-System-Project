@@ -2,12 +2,20 @@ import { useEffect, useState } from "react";
 import { AxiosInstance } from "../../utils/api";
 import { GET_SEATS } from "../../utils/endpoints";
 import Loader from "./Loader";
-import { Button, Seats, SeatsContainer, Main } from "./SeatSelection.style";
+import {
+  Button,
+  Seats,
+  SeatsContainer,
+  Main,
+  BackButton,
+} from "./SeatSelection.style";
+import { MdEventSeat } from "react-icons/md";
+import { BiArrowBack } from "react-icons/bi";
 
 const SeatSelection = (props) => {
   const [seats, setSeats] = useState([]);
-  const [selectedSeat, setSelectedSeat] = useState({});
-  const [loading, setLoading] = useState(false)
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // Get Seats
@@ -19,27 +27,42 @@ const SeatSelection = (props) => {
     );
   }, []);
 
-  return (
-    loading ? <Loader loading={loading}/>: (
-      <Main>
+  const selectSeat = (seat) => {
+    const newSeats = [...selectedSeats];
+    selectedSeats.includes(seat)
+      ? newSeats.splice(newSeats.indexOf(seat), 1)
+      : newSeats.push(seat);
+    setSelectedSeats(newSeats);
+  };
+
+  const confirmBooking = () => {
+    console.log(selectedSeats);
+  };
+
+  return loading ? (
+    <Loader loading={loading} />
+  ) : (
+    <Main>
+      <BackButton onClick={() => props.goBack()}>
+        <BiArrowBack className="back-btn" />
+        <span>Back</span>
+      </BackButton>
       <SeatsContainer>
         {seats.map((s, i) => (
           <Seats
             key={s.id}
             isAvailable={s.status === "available"}
-            selected={s.id === selectedSeat.id}
-            onClick={() => setSelectedSeat(s)}
+            selected={selectedSeats.includes(s)}
+            onClick={() => selectSeat(s)}
           >
-            <div className="seat"></div>
-            <span className="name">{`Seat ${s.seat}`}</span>
+            <MdEventSeat />
           </Seats>
         ))}
       </SeatsContainer>
-      <Button disabled={!selectedSeat || selectedSeat.status !== "available"}>
+      <Button disabled={!selectedSeats.length} onClick={() => confirmBooking()}>
         Confirm Booking
       </Button>
     </Main>
-    )
   );
 };
 

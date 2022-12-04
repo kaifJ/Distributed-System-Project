@@ -9,7 +9,7 @@ const MainContainer = () => {
   return (
     <Container>
       {screenId ? (
-        <SeatSelection screenId={screenId} />
+        <SeatSelection screenId={screenId} goBack={() => setScreenId("")} />
       ) : (
         <ScreenSelection selectScreen={(id) => setScreenId(id)} />
       )}

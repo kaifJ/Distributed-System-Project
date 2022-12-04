@@ -8,12 +8,9 @@ export const SeatsContainer = styled.div`
 export const Seats = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10px 20px;
-  padding: 8px;
   cursor: pointer;
+  pointer-events: ${(props) => (!props.isAvailable ? "none" : "initial")};
   height: fit-content;
-  border: ${(props) =>
-    props.selected ? "2px solid #000" : "2px solid transparent"};
   border-radius: 10px;
   .name {
     margin-top: 10px;
@@ -24,23 +21,39 @@ export const Seats = styled.div`
     line-height: 15px;
     color: #000000;
   }
-  .seat {
+  svg {
     width: 54px;
     height: 49px;
-    background-color: ${(props) => (props.isAvailable ? "#5be45b" : "#e65353")};
+    color: ${(props) =>
+      props.selected ? "#f39e32" : props.isAvailable ? "#4d4a4a" : "#e22222"};
   }
 `;
 
 export const Main = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+`;
+
+export const BackButton = styled.div`
+  display: flex;
+  align-self: flex-start;
+  justify-content: center;
+  cursor: pointer;
+  svg {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-top: 2px;
+  }
 `;
 
 export const Button = styled.button`
   width: 150px;
   height: 30px;
   margin-top: 75px;
-  margin-left: 50px;
+  align-self: center;
 `;
 
 export const Loader = styled.div`
