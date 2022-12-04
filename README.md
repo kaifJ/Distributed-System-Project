@@ -3,7 +3,9 @@ Distributed System Project
 
 ## Team members
 Kaif Shahahusen Jamadar
-Haseeb Usmani 
+
+Haseeb Usmani
+
 Muhammad Zeeshan Zafar
 
 ## Project description
@@ -17,15 +19,16 @@ The main idea of this project is to create a simple distributed system to achiev
 install node modules
 
 ```bash
-    cd booking/ && npm install && cd ../Server_1 && npm install
+cd booking/ && npm install && cd ../Server_1 && npm install && cd..
 ```
 
+to start frontend 
 ```bash
-    cd booking/ && npm run start
+cd booking/ && npm run start
 ```
 
-open another terminal
+open another terminal to backend server
 ```bash
-    cd Server_1/ npm run dev
+cd Server_1/ npm run dev
 ```
 

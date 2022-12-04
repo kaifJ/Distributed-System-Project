@@ -32,6 +32,7 @@ bookingRoutes.get('/:id', async (request, response) => {
 bookingRoutes.post('/', async (request, response) => {
     let seatIds = request.body.selectedSeats
 
+    // If another server is booking any of the seats, then respond with 400
     let keys = await getAllKeys()
     console.log(keys)
     for (let seat of seatIds) {
