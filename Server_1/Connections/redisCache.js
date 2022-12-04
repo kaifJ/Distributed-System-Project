@@ -22,7 +22,7 @@ const deleteKey = async key => {
 
 const connectRedisCache = async () => {
     client = new Redis({
-        host: 'redis-10047.c135.eu-central-1-1.ec2.cloud.redislabs.com',
+        host: process.env.REDIS_HOST,
         port: 10047,
         password: process.env.REDIS_PASSWORD
     });
