@@ -66,6 +66,9 @@ const SeatSelection = (props) => {
         <BiArrowBack className="back-btn" />
         <span>Back</span>
       </BackButton>
+      <div>
+      <h2>Front Row</h2> 
+      </div>
       <SeatsContainer>
         {seats.map((s, i) => (
           <Seats

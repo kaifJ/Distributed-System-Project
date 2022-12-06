@@ -28,7 +28,7 @@ export const Seats = styled.div`
     width: 54px;
     height: 49px;
     color: ${(props) =>
-      props.selected ? "#f39e32" : props.isAvailable ? "#4d4a4a" : "#e22222"};
+      props.selected ? "#fca117" : props.isAvailable ? "#2d7034" : "#e22222"};
   }
 `;
 
@@ -45,7 +45,7 @@ export const BackButton = styled.div`
   align-self: flex-start;
   justify-content: center;
   cursor: pointer;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   svg {
     font-size: 20px;
     margin-right: 10px;

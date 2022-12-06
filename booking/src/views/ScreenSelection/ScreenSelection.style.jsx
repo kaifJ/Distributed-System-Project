@@ -12,7 +12,9 @@ export const Screen = styled.div`
   margin: 20px 30px;
   cursor: pointer;
   .name {
-    font-family: "Inter";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; 
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
