@@ -31,6 +31,18 @@ bookingRoutes.get('/:id', async (request, response) => {
 // Api to book seats. Seats can be multiple
 bookingRoutes.post('/', async (request, response) => {
     let seatIds = request.body.selectedSeats
+
+    // If another server is booking any of the seats, then respond with 400
+    let keys = await getAllKeys()
+    console.log(keys)
+    for (let seat of seatIds) {
+        if (keys.indexOf(seat) !== -1) {
+            return response.status(400).send({
+                message: 'Oops! Selected seat(s) not available. Please selece other seat(s)'
+            })
+        }
+    }
+
     // first update redis cache with the seat status
     let redisPromises = seatIds.map(seat => setKey(seat, "Locked"))
     await Promise.all(redisPromises)
