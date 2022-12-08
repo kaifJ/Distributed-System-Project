@@ -4,7 +4,7 @@ let client
 
 //set setat id as key while booking and status as locked
 const setKey = async (key, value) => {
-    await client.set(key, value, 'EX', constants.BOOKING_DELAY)
+    await client.set(key, value, 'PX', constants.BOOKING_DELAY)
 }
 
 // get status of particular seat

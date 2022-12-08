@@ -8,14 +8,15 @@ const ScreenSelection = (props) => {
 
   useEffect(() => {
     //Get Screen Data when page is initialised
-    AxiosInstance.get(GET_SCREENS).then(
-      (res) => {
+    AxiosInstance.get(GET_SCREENS).then((res) => {
         setScreens(res.data);
       },
-      () => {
-        console.error("Failed to fetch screens");
-      }
-    );
+    ).catch(err => {
+      console.log(err)
+
+      //Network Error Code -> "ERR_NETWORK"
+      
+    });
   }, []);
 
   return (

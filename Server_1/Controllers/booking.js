@@ -79,7 +79,6 @@ bookingRoutes.post('/', async (request, response) => {
     }, constants.BOOKING_DELAY)
 })
 
-
 //Inserting dummy screens into the database
 bookingRoutes.post('/insertDummyScreens', async (request, response) => {
     let dummyScreens = helper.screenDummyData

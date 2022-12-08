@@ -25,12 +25,16 @@ const SeatSelection = (props) => {
   }, []);
 
   const fetch = () => {
-    AxiosInstance.get(GET_SEATS.replace("{id}", props.screenId)).then(
-      (res) => {
+    AxiosInstance.get(GET_SEATS.replace("{id}", props.screenId)).then((res) => {
         setSeats(res.data.seats);
-      },
-      () => console.error("Failed to fetch seats")
-    );
+      }
+    ).catch(err => {
+      console.log(err);
+
+      //Network Error Code -> "ERR_NETWORK"
+      // If server rejects a request -> err.response.status should be checked
+
+    });
   }
 
   const selectSeat = (seat) => {
@@ -55,6 +59,7 @@ const SeatSelection = (props) => {
       setLoading(false)
 
     }).catch(err => {
+      console.log(err)
       setLoading(false)
       fetch()
     })
