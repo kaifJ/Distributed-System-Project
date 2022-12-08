@@ -23,8 +23,9 @@ export const Seats = styled.div`
     color: #000000;
   }
   .seat-number{
+    font-size: 12px;
     position: absolute;
-    margin-left: 20px;
+    margin-left: 21px;
     margin-top: 10px;
   }
   svg {

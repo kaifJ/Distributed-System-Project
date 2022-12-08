@@ -1,11 +1,11 @@
 export const FooterContainerStyle = {
     display: "flex",
     flexDirection: "row",
-    position: "absolute",
+    position: "fixed",
     bottom: 0,
-    margin: "10px 10px",
     backgroundColor: '#F5F5FA',
     width: "inherit",
+    padding: "10px 10px",
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
