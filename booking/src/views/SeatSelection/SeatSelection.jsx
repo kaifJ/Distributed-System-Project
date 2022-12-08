@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AxiosInstance, config } from "../../utils/api";
 import { GET_SEATS, BOOK_SEATS } from "../../utils/endpoints";
 import Loader from "./Loader";
+import Footer from './Footer'
 import {
   Button,
   Seats,
@@ -49,6 +50,7 @@ const SeatSelection = (props) => {
     AxiosInstance.post(BOOK_SEATS, body, config).then(result => {
       fetch()
 
+      setSelectedSeats([])
       setBooked(true)
       setLoading(false)
 
@@ -62,12 +64,27 @@ const SeatSelection = (props) => {
     <Loader loading={loading} booked={booked} />
   ) : (
     <Main>
-      <BackButton onClick={() => props.goBack()}>
-        <BiArrowBack className="back-btn" />
-        <span>Back</span>
-      </BackButton>
-      <div>
-      <h2>Front Row</h2> 
+      <div style={{
+       display: "flex",
+       alignSelf: "flex-start",
+       justifyContent: "space-around",
+       alignItems: "center",
+       cursor: "pointer",
+       width: "inherit",
+      }}>
+        <BackButton onClick={() => props.goBack()}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <BiArrowBack className="back-btn" />
+            <span>Back</span>
+          </div>
+        </BackButton>
+        <Button disabled={!selectedSeats.length} onClick={() => confirmBooking()}>
+          Confirm Booking
+        </Button>
+      </div>
+      <div style={{ textAlign: 'center' }}>
+        <h5>All Eyes this way please </h5>
+        <h2>------------Screen------------</h2>
       </div>
       <SeatsContainer>
         {seats.map((s, i) => (
@@ -77,14 +94,12 @@ const SeatSelection = (props) => {
             selected={selectedSeats.includes(s)}
             onClick={() => selectSeat(s)}
           >
-            <span className="seat-number">{i+1}</span>
+            <span className="seat-number">{i + 1}</span>
             <MdEventSeat />
           </Seats>
         ))}
       </SeatsContainer>
-      <Button disabled={!selectedSeats.length} onClick={() => confirmBooking()}>
-        Confirm Booking
-      </Button>
+      <Footer/>
     </Main>
   );
 };

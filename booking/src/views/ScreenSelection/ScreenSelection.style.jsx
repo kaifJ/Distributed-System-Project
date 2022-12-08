@@ -5,6 +5,7 @@ export const ScreenContainer = styled.div`
   flex-wrap: wrap;
   width: inherit;
   align-self: flex-start;
+  justify-content: center;
 `;
 export const Screen = styled.div`
   display: flex;

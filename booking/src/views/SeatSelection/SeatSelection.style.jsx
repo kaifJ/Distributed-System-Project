@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SeatsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 60%;
+  width: 50%;
 `;
 
 export const Seats = styled.div`
@@ -23,27 +23,30 @@ export const Seats = styled.div`
     color: #000000;
   }
   .seat-number{
+    position: absolute;
+    margin-left: 20px;
+    margin-top: 10px;
   }
   svg {
-    width: 54px;
-    height: 49px;
+    width: 58px;
+    height: 52px;
     color: ${(props) =>
-      props.selected ? "#fca117" : props.isAvailable ? "#2d7034" : "#e22222"};
+      props.selected ? "#f39e32" : props.isAvailable ? "#90EE90" : "#FF7F7F"};
   }
 `;
 
 export const Main = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 80%;
+  width: inherit;
   align-items: center;
 `;
 
 export const BackButton = styled.div`
   display: flex;
   align-self: flex-start;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
   cursor: pointer;
   margin-bottom: 10px;
   svg {
@@ -56,14 +59,15 @@ export const BackButton = styled.div`
 export const Button = styled.button`
   width: 150px;
   height: 30px;
-  margin-top: 75px;
-  align-self: center;
+  background-color: ${(props) =>(props.disabled ? "#808080" : "#F84364")};
+  border-radius: 12px;
+  cursor: pointer;
 `;
 
 export const Loader = styled.div`
   display: flex;
   flex: 1;
-  width: 90vw;
+  width: inherit;
   height: 90vh;
   align-items: center;
   justify-content: center;
@@ -75,4 +79,25 @@ export const Loader = styled.div`
   svg{
     font-size: 50px;
   }
+`
+
+export const FooterContainer = styled.div`
+  display: flex,
+  flex-direction: row,
+  position: absolute,
+  bottom: 0,
+  background-color: #F5F5FA,
+  width: inherit,
+  align-items: center,
+  justify-content: center,
+  text-align: center,
+`
+
+export const FooterColorBox = styled.div`
+  height: 15px,
+  width: 15px,
+  border: 1px,
+  borderRadius: 40%,
+  backgroundColor: ${(props) => (props.color)},
+  marginRight: 2
 `
