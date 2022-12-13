@@ -23,7 +23,7 @@ app.use(requestLogger)
 
 app.use('/api/bookings', bookingRoutes)
 app.use('/', (request, response) => {
-    response.status(200).send('<h1>Hello from server 3</h1>')
+    response.status(200).send('<h1>Hello from server 4</h1>')
 })
 
 server.listen(PORT, () => {

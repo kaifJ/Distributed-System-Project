@@ -14,17 +14,27 @@ import Toast from '../Notification/Toast'
 import { MdEventSeat } from "react-icons/md";
 import { BiArrowBack } from "react-icons/bi";
 import { toast } from "react-toastify";
+import {NETWORK_ERROR} from '../../utils/locale'
 
 const SeatSelection = (props) => {
   const [seats, setSeats] = useState([]);
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [loading, setLoading] = useState(false);
   const [booked, setBooked] = useState(false);
+  const [error, setError] = useState("")
 
   useEffect(() => {
     // Get Seats
     fetch();
   }, []);
+
+  useEffect(() => {
+    error && toast.error(error);
+
+    setTimeout(() => {
+      setError("")
+    },2000)
+  }, [error])
 
   const fetch = () => {
     AxiosInstance.get(GET_SEATS.replace("{id}", props.screenId))
@@ -32,7 +42,11 @@ const SeatSelection = (props) => {
         setSeats(res.data.seats);
       })
       .catch((err) => {
-        toast.error(err?.response?.data?.message || 'OOPS! Looks like something went wrong. Please try again later.');
+        setError(error => {
+          if(error) return error
+          
+          return err?.response?.data?.message || NETWORK_ERROR
+        })
       });
   };
 
@@ -63,7 +77,7 @@ const SeatSelection = (props) => {
         console.log(err);
         setLoading(false);
         fetch();
-        toast.error(err?.response?.data?.message || 'OOPS! Looks like something went wrong. Please try again later.');
+        setError(err?.response?.data?.message || NETWORK_ERROR)
       });
   };
 

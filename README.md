@@ -32,3 +32,6 @@ open another terminal to backend server
 cd Server_1/ npm run dev
 ```
 
+## Environment Variables
+Running the server direclty won't run as the server need mongoDB URL, redis URL. You will need to set up environment variables.
+
