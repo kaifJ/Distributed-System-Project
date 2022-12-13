@@ -10,10 +10,10 @@ import {
   Main,
   BackButton,
 } from "./SeatSelection.style";
+import Toast from '../Notification/Toast'
 import { MdEventSeat } from "react-icons/md";
 import { BiArrowBack } from "react-icons/bi";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const SeatSelection = (props) => {
   const [seats, setSeats] = useState([]);
@@ -32,10 +32,7 @@ const SeatSelection = (props) => {
         setSeats(res.data.seats);
       })
       .catch((err) => {
-        console.log(err);
-
-        //Network Error Code -> "ERR_NETWORK"
-        // If server rejects a request -> err.response.status should be checked
+        toast.error(err?.response?.data?.message || 'OOPS! Looks like something went wrong. Please try again later.');
       });
   };
 
@@ -66,7 +63,7 @@ const SeatSelection = (props) => {
         console.log(err);
         setLoading(false);
         fetch();
-        toast.error(err.response.data.message);
+        toast.error(err?.response?.data?.message || 'OOPS! Looks like something went wrong. Please try again later.');
       });
   };
 
@@ -115,7 +112,7 @@ const SeatSelection = (props) => {
         ))}
       </SeatsContainer>
       <Footer />
-      <ToastContainer draggable={false} hideProgressBar theme="colored" />
+      <Toast />
     </Main>
   );
 };
