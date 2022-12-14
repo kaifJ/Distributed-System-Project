@@ -22,6 +22,9 @@ app.use(cors())
 app.use(requestLogger)
 
 app.use('/api/bookings', bookingRoutes)
+app.use('/', (request, response) => {
+    response.status(200).send()
+})
 
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)

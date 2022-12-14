@@ -1,6 +1,6 @@
 const requestLogger = (request, response, next) => {
-    if (request.path != "/")	
-   console.log(`Server -1 Method: ${request.method}, Path: ${request.path}`)
+    if (request.path != "/")
+        console.log(`Server -1 Method: ${request.method}, Path: ${request.path}`)
     next()
 }
 
