@@ -12,13 +12,14 @@ const connectToDB = require('./Connections/mongodb')
 connectToDB()
 connectToCache()
 
-const PORT = process.env.PORT || 3001
+const PORT = 8080
 
 const app = express()
 const server = http.createServer(app)
 
 app.use(express.json())
 app.use(cors())
+app.use(express.static('build'))
 app.use(requestLogger)
 
 app.use('/api/bookings', bookingRoutes)

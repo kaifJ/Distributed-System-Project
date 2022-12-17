@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3001/"
+const baseURL = "https://ds-booking.fly.dev/"
 
 export const AxiosInstance = axios.create({ baseURL: baseURL });
 export const config = {
