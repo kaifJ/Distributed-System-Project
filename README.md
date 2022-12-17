@@ -35,3 +35,13 @@ cd Server_1/ npm run dev
 ## Environment Variables
 Running the server direclty won't run as the server need mongoDB URL, redis URL. You will need to set up environment variables.
 
+Quick set up for redis
+```
+https://dev.to/ramko9999/host-and-use-redis-for-free-51if
+```
+
+Quick set up for MongoDB
+```
+https://www.mongodb.com/docs/atlas/
+```
+
