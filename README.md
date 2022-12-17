@@ -45,3 +45,24 @@ Quick set up for MongoDB
 https://www.mongodb.com/docs/atlas/
 ```
 
+## Deploy on fly
+Check out the running application [Here](https://ds-booking.fly.dev/)
+
+## Available Scripts
+### `npm start`
+Run the server
+
+### `npm run dev`
+Run the server in development mode.
+
+### `npm run build:ui`
+To build the front-end and copy the build to server 1 to be served statically
+
+### `npm run deploy`
+To deploy to fly
+
+### `deploy:full`
+To build the front-end then copy the build to server 1 and deploy to fly
+
+### `logs:prod`
+To print production logs
