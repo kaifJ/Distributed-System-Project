@@ -9,6 +9,7 @@ const helper = require('../utils/dummydata')
 // Api to get all screens information
 bookingRoutes.get('/', async (request, response) => {
     let screens = await Screen.find({})
+
     response.status(200).json(screens)
 })
 
